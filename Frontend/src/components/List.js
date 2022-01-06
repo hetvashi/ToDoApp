@@ -4,7 +4,7 @@ import Todo from "./Todo";
 const List = () => {
     return (
         <div className="ui grid center aligned">
-            <Todo />
+            <Todo title="test #1" />
         </div>
 
     );
