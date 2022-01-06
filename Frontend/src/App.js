@@ -15,12 +15,17 @@ const list = [
 
 const App = () => {
   const [todoList, setTodoList] = useState(list);
+
+  const addTodo = (item) => {
+    setTodoList((oldList) => [...oldList, item]);
+  };
+
   return <div className='ui container center aligned'>
     <Section>
       <h1>{appTitle}</h1>
     </Section>
     <Section>
-      <Form />
+      <Form addTodo={addTodo} />
     </Section>
     <Section>
       <List list={todoList} />
