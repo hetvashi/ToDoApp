@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-const Todo = ({ title }) => {
+const Todo = ({ title, completed }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [value, setValue] = useState(title);
     const [tempValue, setTempValue] = useState(title);
+    const [completedState, setCompleted] = useState(completed);
 
     const handleDivDoubleClick = () => {
         setIsEditing(true);
@@ -25,9 +26,13 @@ const Todo = ({ title }) => {
         setTempValue(e.target.value);
     };
 
+    const handleButtonClick = () => {
+        setCompleted((oldCompleted) => !oldCompleted);
+    };
+
 
     return (
-        <div className="row" onDoubleClick={handleDivDoubleClick}>
+        <div className="row" >
             {
                 isEditing ?
 
@@ -42,11 +47,11 @@ const Todo = ({ title }) => {
                         </div>
                     </div> :
                     <>
-                        <div className="column five wide">
-                            <h2>{value}</h2>
+                        <div className="column five wide" onDoubleClick={handleDivDoubleClick}>
+                            <h2 className={"ui header" + (completedState ? " green" : "")}>{value}</h2>
                         </div>
                         <div className="column one wide">
-                            <button className="ui button circular icon green"><i className="white check icon"></i></button>
+                            <button className={"ui button circular icon" + (completedState ? " blue" : " green")} onClick={handleButtonClick}><i className="white check icon"></i></button>
                         </div>
                         <div className="column one wide">
                             <button className="ui button circular icon red"><i className="white remove icon"></i></button>
