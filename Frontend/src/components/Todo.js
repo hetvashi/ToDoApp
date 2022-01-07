@@ -60,6 +60,9 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
                             >
                                 <i className="white remove icon"></i></button>
                         </div>
+                        <div className="column one wide">
+                            <button><i class="star outline icon"></i></button>
+                        </div>
                     </>
             }
         </div>
