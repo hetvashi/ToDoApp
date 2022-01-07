@@ -1,8 +1,8 @@
 import React from "react";
 import Todo from "./Todo";
 
-const List = ({ list }) => {
-    const renderedList = list.map((item) => <Todo title={item.title} completed={item.completed} key={item.title} />);
+const List = ({ list, removeTodoListProp }) => {
+    const renderedList = list.map((item) => <Todo title={item.title} removeTodoItemProp={(e) => removeTodoListProp(item.id)} completed={item.completed} key={item.title} />);
     return (
         <div className="ui grid center aligned">
             {renderedList}

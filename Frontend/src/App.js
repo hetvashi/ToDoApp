@@ -7,9 +7,9 @@ import List from './components/List';
 const appTitle = "To-Do App"
 
 const list = [
-  { title: "Test #1", completed: false },
-  { title: "Test #2", completed: false },
-  { title: "Test #3", completed: false }
+  { id: 1, title: "Test #1", completed: false },
+  { id: 2, title: "Test #2", completed: false },
+  { id: 3, title: "Test #3", completed: false }
 
 ];
 
@@ -20,6 +20,12 @@ const App = () => {
     setTodoList((oldList) => [...oldList, item]);
   };
 
+  const removeTodo = (id) => {
+    setTodoList((oldList) => oldList.filter((item) => item.id !== id));
+  };
+
+
+
   return <div className='ui container center aligned'>
     <Section>
       <h1>{appTitle}</h1>
@@ -28,7 +34,7 @@ const App = () => {
       <Form addTodo={addTodo} />
     </Section>
     <Section>
-      <List list={todoList} />
+      <List removeTodoListProp={removeTodo} list={todoList} />
     </Section>
 
 

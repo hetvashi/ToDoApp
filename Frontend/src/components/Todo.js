@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Todo = ({ title, completed }) => {
+const Todo = ({ title, completed, removeTodoItemProp }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [value, setValue] = useState(title);
     const [tempValue, setTempValue] = useState(title);
@@ -54,7 +54,11 @@ const Todo = ({ title, completed }) => {
                             <button className={"ui button circular icon" + (completedState ? " blue" : " green")} onClick={handleButtonClick}><i className="white check icon"></i></button>
                         </div>
                         <div className="column one wide">
-                            <button className="ui button circular icon red"><i className="white remove icon"></i></button>
+                            <button
+                                onClick={removeTodoItemProp}
+                                className="ui button circular icon red"
+                            >
+                                <i className="white remove icon"></i></button>
                         </div>
                     </>
             }
